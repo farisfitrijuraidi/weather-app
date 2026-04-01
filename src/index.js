@@ -1,3 +1,3 @@
-import "./style.css";
-
-console.log("Template is working!");
+import './style.css';
+import './dom.js';
+import './weather.js';
