@@ -6,21 +6,30 @@
     <title>Weatheria</title>
 </head>
 <body>
-    <form>
+    <form id="weather-form" novalidate>
         <div>
             <label>
-                <input type="text" id="text" name="text" placeholder="Type the location here...">
+                <input type="text" id="text" name="text" maxlength="100" placeholder="Type the location here..." pattern="^[a-zA-Z\s]+$" required>
+                <span class="error-message"></span>
             </label>
             <button id="submit">Submit</button>
         </div>
     </form>
-    <span class="user_location"></span>
-    <span class="description"></span>
-    <span class="temperature"></span>
-    <span class="feelsLike"></span>
-    <span class="humidity"></span>
-    <span class="uvindex"></span>
-    <span class="precipitation"></span>
-    <span class="weather-data"></span>
+    <div class="loading">
+        <span class="loading-text"></span>
+    </div>
+    <div class="loading-spinner">
+        <img src="./assets/spinner.svg" alt="Loading..." class="spinner-icon">
+    </div>
+    <div class="container">
+        <span class="user_location"></span>
+        <span class="description"></span>
+        <span class="temperature"></span>
+        <span class="feelsLike"></span>
+        <span class="humidity"></span>
+        <span class="uvindex"></span>
+        <span class="precipitation"></span>
+        <span class="weather-data"></span>
+    </div>
 </body>
 </html>

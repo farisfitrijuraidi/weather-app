@@ -13,6 +13,7 @@ const fetchWeatherData = async (cityName) => {
 	const uvindex = data.currentConditions.uvindex;
 	const precipitation = data.currentConditions.precipprob;
 	const temperature = data.currentConditions.temp;
+	console.log(data);
 
 	return {
 		address,
