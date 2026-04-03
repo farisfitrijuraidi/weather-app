@@ -1,4 +1,13 @@
 import { fetchWeatherData } from './weather.js';
+import clearDay from './assets/clear-day.svg';
+import clearNight from './assets/clear-night.svg';
+import cloudy from './assets/cloudy.svg';
+import fog from './assets/fog.svg';
+import rain from './assets/rain.svg';
+import snow from './assets/snow.svg';
+import wind from './assets/wind.svg';
+import partlyCloudyDay from './assets/partly-cloudy-day.svg';
+import partlyCloudyNight from './assets/partly-cloudy-night.svg';
 
 const form = document.querySelector('form');
 const userInput = document.querySelector('#text');
@@ -14,6 +23,19 @@ const container = document.querySelector('.container');
 const loadingIndicator = document.querySelector('.loading-text');
 const errorMessage = document.querySelector('.error-message');
 const spinnerIcon = document.querySelector('.spinner-icon');
+const weatherIcon = document.querySelector('.weather-icon');
+
+const iconMap = {
+	'clear-day': clearDay,
+	'clear-night': clearNight,
+	cloudy: cloudy,
+	fog: fog,
+	rain: rain,
+	snow: snow,
+	wind: wind,
+	'partly-cloudy-day': partlyCloudyDay,
+	'partly-cloudy-night': partlyCloudyNight,
+};
 
 form.addEventListener('submit', (e) => {
 	if (!userInput.validity.valid) {
@@ -35,6 +57,9 @@ form.addEventListener('submit', (e) => {
 	spinnerIcon.style.display = 'block';
 	fetchWeatherData(standardInput)
 		.then((data) => {
+			weatherIcon.style.display = 'block';
+			weatherIcon.src = iconMap[data.icon] || '';
+			weatherIcon.alt = data.description;
 			spinnerIcon.style.display = 'none';
 			loadingIndicator.textContent = '';
 			locationDisplay.textContent = `Location: ${data.address}`;

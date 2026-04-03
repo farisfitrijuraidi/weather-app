@@ -7,3 +7,10 @@ body {
     height: 50px;
     display: none; /* Hide the spinner by default */
 }
+
+.weather-icon {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    display: none; /* Hide the weather icon by default */
+}
