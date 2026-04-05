@@ -6,31 +6,72 @@
     <title>Weatheria</title>
 </head>
 <body>
-    <form id="weather-form" novalidate>
-        <div>
-            <label>
-                <input type="text" id="text" name="text" maxlength="100" placeholder="Type the location here..." pattern="^[a-zA-Z\s]+$" required>
-                <span class="error-message"></span>
-            </label>
-            <button id="submit">Submit</button>
+    <div class="main-container">
+        <form id="weather-form">
+            <div class="input-container">
+                <label>
+                    <input type="text" id="text" name="text" maxlength="100" placeholder="Type the location here..." pattern="^[a-zA-Z\s]+$" required>
+                </label>
+                <button id="submit" class="submit">Submit</button>
+            </div>
+        </form>
+        <div class="loading">
+            <span class="loading-text"></span>
         </div>
-    </form>
-    <div class="loading">
-        <span class="loading-text"></span>
-    </div>
-    <div class="loading-spinner">
-        <img src="./assets/spinner.svg" alt="Loading..." class="spinner-icon">
-    </div>
-    <div class="container">
-        <span class="user_location"></span>
-        <span class="description"></span>
-        <img class="weather-icon" src="#" alt="Weather Icon">
-        <span class="temperature"></span>
-        <span class="feelsLike"></span>
-        <span class="humidity"></span>
-        <span class="uvindex"></span>
-        <span class="precipitation"></span>
-        <span class="weather-data"></span>
+        <div class="loading-spinner">
+            <img src="./assets/spinner.svg" alt="Loading..." class="spinner-icon">
+        </div>
+        <div class="container">
+            <div class="top-section">
+                <div class="right-part">
+                    <span class="conditions"></span>
+                    <img class="weather-icon" src="#" alt="Weather Icon">
+                </div>
+                <div class="left-part-1">
+                    <span class="temperature"></span>
+                    <span class="feelsLike"></span>
+                </div>
+                <div class="left-part-2">
+                    <span class="user_location"></span>
+                    <span class="date"></span>
+                </div>
+            </div>
+            <div class="bottom-section">
+                <div class="left">
+                    <div class="windspeed">
+                        <p class="windspeed-label">Wind Speed:</p>
+                        <span class="windspeed-value"></span>
+                    </div>
+                    <div class="precipitation">
+                        <p class="precipitation-label">Precipitation:</p>
+                        <span class="precipitation-value"></span>
+                    </div>
+                    <div class="sunrise">
+                        <p class="sunrise-label">Sunrise:</p>
+                        <span class="sunrise-value"></span>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="uvindex">
+                        <p class="uvindex-label">UV Index:</p>
+                        <span class="uvindex-value"></span>
+                    </div>
+                    <div class="humidity">
+                        <p class="humidity-label">Humidity:</p>
+                        <span class="humidity-value"></span>
+                    </div>
+                    <div class="sunset">
+                        <p class="sunset-label">Sunset:</p>
+                        <span class="sunset-value"></span>
+                    </div>
+                </div>
+                
+                
+                <div class="weather-data">
+                    <span class="weather-data-text"></span>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

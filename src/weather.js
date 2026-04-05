@@ -7,24 +7,32 @@ const fetchWeatherData = async (cityName) => {
 	}
 	const data = await response.json();
 	const address = data.resolvedAddress;
-	const description = data.description;
-	const feelsLike = data.currentConditions.feelslike;
-	const humidity = data.currentConditions.humidity;
-	const uvindex = data.currentConditions.uvindex;
-	const precipitation = data.currentConditions.precipprob;
-	const temperature = data.currentConditions.temp;
-	const icon = data.currentConditions.icon;
+	const {
+		feelslike,
+		humidity,
+		uvindex,
+		precipprob,
+		temp,
+		icon,
+		conditions,
+		sunrise,
+		sunset,
+		windspeed,
+	} = data.currentConditions;
 	console.log(data);
 
 	return {
 		address,
-		description,
-		feelsLike,
+		conditions,
+		feelslike,
 		humidity,
 		uvindex,
-		precipitation,
-		temperature,
+		precipprob,
+		temp,
 		icon,
+		sunrise,
+		sunset,
+		windspeed,
 	};
 };
 

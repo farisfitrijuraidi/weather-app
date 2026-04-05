@@ -8,22 +8,34 @@ import snow from './assets/snow.svg';
 import wind from './assets/wind.svg';
 import partlyCloudyDay from './assets/partly-cloudy-day.svg';
 import partlyCloudyNight from './assets/partly-cloudy-night.svg';
+import { format } from 'date-fns';
 
 const form = document.querySelector('form');
 const userInput = document.querySelector('#text');
 const locationDisplay = document.querySelector('.user_location');
 const weatherData = document.querySelector('.weather-data');
-const descriptionDisplay = document.querySelector('.description');
+const conditionsDisplay = document.querySelector('.conditions');
 const feelsLikeDisplay = document.querySelector('.feelsLike');
-const humidityDisplay = document.querySelector('.humidity');
-const uvindexDisplay = document.querySelector('.uvindex');
-const precipitationDisplay = document.querySelector('.precipitation');
+const humidityDisplay = document.querySelector('.humidity-value');
+
+const uvindexDisplay = document.querySelector('.uvindex-value');
+
+const precipitationDisplay = document.querySelector('.precipitation-value');
+
 const temperatureDisplay = document.querySelector('.temperature');
+const sunriseDisplay = document.querySelector('.sunrise-value');
+
+const sunsetDisplay = document.querySelector('.sunset-value');
+
+const windspeedDisplay = document.querySelector('.windspeed-value');
+
 const container = document.querySelector('.container');
 const loadingIndicator = document.querySelector('.loading-text');
-const errorMessage = document.querySelector('.error-message');
 const spinnerIcon = document.querySelector('.spinner-icon');
 const weatherIcon = document.querySelector('.weather-icon');
+const date = document.querySelector('.date');
+const currentDate = new Date();
+const formattedDate = format(currentDate, 'EEEE, d MMMM yyyy');
 
 const iconMap = {
 	'clear-day': clearDay,
@@ -55,6 +67,7 @@ form.addEventListener('submit', (e) => {
 		span.textContent = '';
 	});
 	spinnerIcon.style.display = 'block';
+	date.textContent = formattedDate;
 	fetchWeatherData(standardInput)
 		.then((data) => {
 			weatherIcon.style.display = 'block';
@@ -62,13 +75,16 @@ form.addEventListener('submit', (e) => {
 			weatherIcon.alt = data.description;
 			spinnerIcon.style.display = 'none';
 			loadingIndicator.textContent = '';
-			locationDisplay.textContent = `Location: ${data.address}`;
-			descriptionDisplay.textContent = `Description: ${data.description}`;
-			feelsLikeDisplay.textContent = `Feels Like: ${data.feelsLike}°C`;
-			humidityDisplay.textContent = `Humidity: ${data.humidity}%`;
-			uvindexDisplay.textContent = `UV Index: ${data.uvindex}`;
-			precipitationDisplay.textContent = `Precipitation: ${data.precipitation}%`;
-			temperatureDisplay.textContent = `Temperature: ${data.temperature}°C`;
+			locationDisplay.textContent = `${standardInput}`;
+			conditionsDisplay.textContent = `${data.conditions}`;
+			feelsLikeDisplay.textContent = `Feels like ${data.feelslike}°C`;
+			humidityDisplay.textContent = `${data.humidity}%`;
+			uvindexDisplay.textContent = `${data.uvindex}`;
+			precipitationDisplay.textContent = `${data.precipprob}%`;
+			temperatureDisplay.textContent = `${data.temp}°C`;
+			sunriseDisplay.textContent = `${data.sunrise}`;
+			sunsetDisplay.textContent = `${data.sunset}`;
+			windspeedDisplay.textContent = `${data.windspeed} km/h`;
 		})
 		.catch((error) => {
 			spinnerIcon.style.display = 'none';
@@ -85,7 +101,6 @@ const showError = () => {
 	} else if (userInput.validity.patternMismatch) {
 		userInput.setCustomValidity('You can only enter letters and spaces.');
 	}
-	errorMessage.textContent = userInput.validationMessage;
 	userInput.className = 'error active';
 };
 
@@ -93,7 +108,6 @@ userInput.addEventListener('input', () => {
 	userInput.setCustomValidity('');
 	if (userInput.validity.valid) {
 		userInput.className = 'error';
-		errorMessage.textContent = '';
 	} else {
 		showError();
 	}
