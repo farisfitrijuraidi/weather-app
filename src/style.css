@@ -102,7 +102,7 @@ label {
     flex: 1;
 }
 
-input[type="text"] {
+#text {
     font-size: var(--font-size-standard);
     line-height: 1.5;
     border-radius: var(--space-sm);
@@ -115,7 +115,7 @@ input[type="text"] {
     width: 100%;
 }
 
-input[type="text"]:focus {
+#text:focus {
     border: 1px solid blue;
     outline: none;
     box-shadow: var(--box-shadow-focus);
