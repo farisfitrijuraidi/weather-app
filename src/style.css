@@ -1,9 +1,5 @@
 :root {
-    --button-active: #e7e7e7;
-    --button-inactive: rgb(241, 241, 241);
-    --button-background: #ebecee;
-    --button-border: #cbcacf;
-    
+    --body-main: rgb(241, 241, 241);
     --bg-main: #f8f8fa;
     
     --border-light-grey: #E5E7EB;
@@ -16,8 +12,6 @@
     --space-xlg: 64px;
 
     --font-ui: 'Inter', sans-serif;
-    --font-size-standard: 1rem;
-    --font-size-smaller: 0.75rem;
     --font-futuristic: 'Quantico', sans-serif;
     --font-ui2: 'Chakra Petch', sans-serif;
 
@@ -61,7 +55,7 @@ body {
     margin: 0;
     min-height: 100vh;
     padding: var(--space-sm);
-    background-color: var(--button-inactive);
+    background-color: var(--body-main);
     font-family: var(--font-ui2);
 }
 
@@ -74,18 +68,28 @@ body {
     box-shadow: var(--box-shadow);
 }
 
+.loading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
 .spinner-icon {
     width: 50px;
     height: 50px;
-    display: none; /* Hide the spinner by default */
+    display: none;
 }
 
 .weather-icon {
     width: 200px;
     height: 200px;
     margin-top: 20px;
-    display: none; /* Hide the weather icon by default */
     margin-top: 0;
+}
+
+.conditions {
+    font-size: 1.5rem;
 }
 
 .input-container {

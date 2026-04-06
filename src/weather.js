@@ -1,5 +1,5 @@
 const fetchWeatherData = async (cityName) => {
-	const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?unitGroup=metric&key=VJQ66CNKJ3UTF8C8FFFMLG787`;
+	const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?unitGroup=metric&key=${process.env.WEATHER_API_KEY}`;
 
 	const response = await fetch(url);
 	if (!response.ok) {
